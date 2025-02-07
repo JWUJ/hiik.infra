@@ -28,9 +28,9 @@ services:
     env_file: private/environment/dnsrobocert.env
     # used in config/dnsrobocert.yml
     environment:
-      - PROVIDER=yandexcloud
-      - EMAIL=tech@favor-group.ru
-      - DOMAIN=favor-group.ru
+      - PROVIDER=none
+      - EMAIL=admin@hiik.ru
+      - DOMAIN=hiik.ru
 
     logging:
       driver: json-file
@@ -70,7 +70,7 @@ services:
       # Logs
       - ./logs/nginx:/var/log/nginx
     environment:
-      - TZ=Europe/Moscow
+      - TZ=Asia/Vladivostok
 
     logging:
       driver: json-file
@@ -107,7 +107,7 @@ services:
       - ./logs/nginx:/var/log/nginx
       # switch timezone from UTC to Moscow
       - ./config/php/moscow-timezone:/etc/timezone:ro
-      - ./config/php/moscow-localtime:/etc/localtime:ro
+      - ./config/php/vladivostok-localtime:/etc/localtime:ro
 
     logging:
       driver: json-file
@@ -137,7 +137,7 @@ services:
       - ./config/cron/php-cron.cron:/etc/cron.d/tasks:ro
       # switch timezone from UTC to Moscow
       - ./config/php/moscow-timezone:/etc/timezone:ro
-      - ./config/php/moscow-localtime:/etc/localtime:ro
+      - ./config/php/vladivostok-localtime:/etc/localtime:ro
 
     logging:
       driver: json-file
@@ -164,8 +164,8 @@ services:
       # Logs
       - ./logs/mysql:/var/log/mysql
     environment:
-      MYSQL_DATABASE: favor_group_ru
-      TZ: Europe/Moscow
+      MYSQL_DATABASE: hiik_bitrix
+      TZ: Asia/Vladivostok
     cap_add:
       - SYS_NICE  # CAP_SYS_NICE
 
@@ -288,7 +288,7 @@ services:
 #    volumes:
 #      - ./web/dev:/home/web
 #    environment:
-#      PUBLICHOST: favor-group.ru
+#      PUBLICHOST: hiik.ru
 #      FTP_USER_HOME: /home/web
 #      FTP_PASSIVE_PORTS: 30000:30009
 #
